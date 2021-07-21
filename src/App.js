@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Child from './components/Child';
+import Child2 from './components/Child2';
+import { useEffect, useReducer, useRef, useState, useCallback } from "react"
 function App() {
+  const [counter,setCounter] = useState(1);
+
+  const handleOnClick = useCallback(()=>{
+    console.log("X");
+  },[]);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+       <button onClick={()=>{setCounter(counter+1)}}>Parent increment counter</button>
+       <Child2 parentName={'Luan'} handleOnClick={handleOnClick}></Child2>
     </div>
   );
 }
