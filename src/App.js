@@ -1,18 +1,12 @@
-import Child from './components/Child';
-import Child2 from './components/Child2';
-import { useEffect, useReducer, useRef, useState, useCallback } from "react"
+import IncrementComponent from "./components/smartComponents/IncrementComponent";
+import DecrementComponent from "./components/smartComponents/DecrementComponent";
+import ShowNumberComponent from "./components/smartComponents/ShowNumberComponent";
 function App() {
-  const [counter,setCounter] = useState(1);
-
-  const handleOnClick = useCallback(()=>{
-    console.log("X");
-  },[]);
-
-
   return (
     <div>
-       <button onClick={()=>{setCounter(counter+1)}}>Parent increment counter</button>
-       <Child2 parentName={'Luan'} handleOnClick={handleOnClick}></Child2>
+      <IncrementComponent></IncrementComponent>
+      <ShowNumberComponent></ShowNumberComponent>
+      <DecrementComponent></DecrementComponent>
     </div>
   );
 }
