@@ -1,12 +1,22 @@
-import IncrementComponent from "./components/smartComponents/IncrementComponent";
-import DecrementComponent from "./components/smartComponents/DecrementComponent";
-import ShowNumberComponent from "./components/smartComponents/ShowNumberComponent";
+import axios from "axios";
+import { useState } from "react";
+
 function App() {
+  const [content,setContent] = useState('');
+  const submit = (evt)=>{
+    evt.preventDefault();
+    axios.post('http://localhost/submitData.php',{content:content}).then(()=>{
+      alert("Submit thành công");
+    }).catch((err)=>{
+      alert("Submit thất bài");
+    })
+  }
   return (
     <div>
-      <IncrementComponent></IncrementComponent>
-      <ShowNumberComponent></ShowNumberComponent>
-      <DecrementComponent></DecrementComponent>
+      <form onSubmit={(evt)=>submit(evt)}>
+        <input type="text" onChange={(evt)=>{setContent(evt.target.value)}}/>
+        <button>Submit</button>
+      </form>
     </div>
   );
 }
